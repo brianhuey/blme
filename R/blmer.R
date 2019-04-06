@@ -33,7 +33,7 @@ blmer <- function(formula, data = NULL, REML = TRUE,
   }
   
   fixef.prior <- mc$fixef.prior ## for delayed evaluation, get quoted versions
-  cov.prior <- if (!missCovPrior) mc$cov.prior else formals(blmer)$cov.prior
+  cov.prior <- if (!missCovPrior) cov.prior else formals(blmer)$cov.prior
   resid.prior <- mc$resid.prior
   if (!is.null(mc$var.prior)) resid.prior <- parse(text = mc$var.prior)[[1]]
   mc$fixef.prior <- NULL
@@ -129,7 +129,7 @@ bglmer <- function(formula, data = NULL, family = gaussian,
   mc <- mcout <- match.call()
   
   fixef.prior <- mc$fixef.prior ## for delayed evaluation, store as quoted
-  cov.prior <- if (!covPriorMissing) mc$cov.prior else formals(bglmer)$cov.prior
+  cov.prior <- if (!covPriorMissing) cov.prior else formals(bglmer)$cov.prior
   mc$fixef.prior <- NULL
   mc$cov.prior <- NULL
   
